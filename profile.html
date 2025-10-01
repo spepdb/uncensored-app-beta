@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - Social Platform</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/profile-styles.css">
+</head>
+<body>
+    <!-- Top Header -->
+    <header class="header">
+        <button class="btn btn-ghost" onclick="window.history.back()">← Back</button>
+        <h1 class="logo" id="profileUsername">Profile</h1>
+        <div class="header-actions">
+            <button class="btn btn-ghost" id="profileMenuBtn">⋯</button>
+        </div>
+    </header>
+
+    <!-- Profile Menu -->
+    <div class="dropdown-menu" id="profileDropdown">
+        <button id="shareProfileBtn">📤 Share Profile</button>
+        <button id="reportProfileBtn">🚨 Report</button>
+        <button id="blockUserBtn">🚫 Block User</button>
+    </div>
+
+    <!-- Main Profile Content -->
+    <main class="main-content">
+        <!-- Profile Header -->
+        <div class="profile-header">
+            <div class="profile-banner">
+                <img src="assets/icons/default-banner.png" alt="Banner" id="profileBanner" 
+                     onerror="this.style.display='none'">
+            </div>
+            
+            <div class="profile-info">
+                <div class="profile-avatar-section">
+                    <img src="assets/icons/default-profile.png" alt="Profile" id="profileAvatar" 
+                         class="profile-avatar">
+                    <div class="profile-actions">
+                        <button class="btn btn-primary" id="followButton">Follow</button>
+                        <button class="btn btn-secondary" id="messageButton">Message</button>
+                        <button class="btn btn-ghost" id="moreActionsBtn">⋯</button>
+                    </div>
+                </div>
+                
+                <div class="profile-details">
+                    <h1 class="profile-display-name" id="profileDisplayName">Loading...</h1>
+                    <div class="profile-username" id="profileHandle">@username</div>
+                    <div class="profile-bio" id="profileBio"></div>
+                    
+                    <div class="profile-meta">
+                        <span class="profile-join-date" id="joinDate"></span>
+                        <span class="profile-followers" id="followerCount">0 followers</span>
+                    </div>
+                    
+                    <div class="profile-stats">
+                        <div class="stat">
+                            <strong id="postsCount">0</strong>
+                            <span>Posts</span>
+                        </div>
+                        <div class="stat">
+                            <strong id="followingCount">0</strong>
+                            <span>Following</span>
+                        </div>
+                        <div class="stat">
+                            <strong id="followersCount">0</strong>
+                            <span>Followers</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Profile Tabs -->
+        <div class="profile-tabs">
+            <button class="tab-btn active" data-tab="posts">Posts</button>
+            <button class="tab-btn" data-tab="replies">Replies</button>
+            <button class="tab-btn" data-tab="media">Media</button>
+            <button class="tab-btn" data-tab="likes">Likes</button>
+        </div>
+
+        <!-- Tab Content -->
+        <div class="tab-content">
+            <div class="tab-pane active" id="postsTab">
+                <div class="posts-container" id="profilePosts">
+                    <!-- Posts will be loaded here -->
+                    <div class="loading-indicator">Loading posts...</div>
+                </div>
+            </div>
+            
+            <div class="tab-pane" id="repliesTab">
+                <div class="empty-state">
+                    <h3>No replies yet</h3>
+                    <p>Replies will appear here when the user comments on posts.</p>
+                </div>
+            </div>
+            
+            <div class="tab-pane" id="mediaTab">
+                <div class="empty-state">
+                    <h3>No media yet</h3>
+                    <p>Photos and videos will appear here when the user posts them.</p>
+                </div>
+            </div>
+            
+            <div class="tab-pane" id="likesTab">
+                <div class="empty-state">
+                    <h3>No likes yet</h3>
+                    <p>Posts that this user liked will appear here.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <a href="index.html" class="nav-item">🏠</a>
+        <a href="search.html" class="nav-item">🔍</a>
+        <a href="notifications.html" class="nav-item">🔔</a>
+        <a href="dms.html" class="nav-item">💬</a>
+    </nav>
+
+    <!-- Edit Profile Modal -->
+    <div class="modal" id="editProfileModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Edit Profile</h3>
+                <button class="close-modal" id="closeEditModal">×</button>
+            </div>
+            <form id="editProfileForm" class="modal-body">
+                <div class="form-group">
+                    <label for="editDisplayName">Display Name</label>
+                    <input type="text" id="editDisplayName" class="input" maxlength="50">
+                </div>
+                <div class="form-group">
+                    <label for="editBio">Bio</label>
+                    <textarea id="editBio" class="input" rows="3" maxlength="160" 
+                              placeholder="Tell people about yourself..."></textarea>
+                    <div class="char-counter" id="bioCharCounter">0/160</div>
+                </div>
+                <div class="form-group">
+                    <label for="editWebsite">Website</label>
+                    <input type="url" id="editWebsite" class="input" placeholder="https://...">
+                </div>
+                <div class="form-group">
+                    <label for="editLocation">Location</label>
+                    <input type="text" id="editLocation" class="input" placeholder="Your location">
+                </div>
+            </form>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="cancelEditBtn">Cancel</button>
+                <button class="btn btn-primary" id="saveProfileBtn">Save Changes</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/profile.js"></script>
+</body>
+</html>
