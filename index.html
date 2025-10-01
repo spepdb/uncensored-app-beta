@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Social Platform</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/feed-styles.css">
+</head>
+<body>
+    <!-- Top Header -->
+    <header class="header">
+        <div class="profile-icon" id="profileMenuBtn">
+            <img src="assets/icons/default-profile.png" alt="Profile" id="headerProfileImg">
+        </div>
+        <h1 class="logo">Social</h1>
+        <div class="header-actions">
+            <button class="btn btn-ghost" onclick="refreshFeed()" title="Refresh">🔄</button>
+        </div>
+    </header>
+
+    <!-- Main Feed -->
+    <main class="main-content">
+        <!-- Post Creation -->
+        <div class="post-creation auth-dependent" id="postCreation">
+            <div class="post-input-container">
+                <img src="assets/icons/default-profile.png" alt="You" class="post-avatar" id="postUserAvatar">
+                <textarea id="postInput" placeholder="What's happening?" maxlength="280"></textarea>
+            </div>
+            <div class="post-actions-bar">
+                <div class="post-options">
+                    <span class="char-counter" id="charCounter">0/280</span>
+                </div>
+                <button class="btn btn-primary" id="postButton" disabled>Post</button>
+            </div>
+        </div>
+
+        <!-- Feed Content -->
+        <div class="feed" id="feedContainer">
+            <!-- Posts will be loaded here -->
+            <div class="loading-indicator" id="feedLoading">Loading posts...</div>
+        </div>
+    </main>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <a href="index.html" class="nav-item active">
+            <span class="icon">🏠</span>
+            <span>Home</span>
+        </a>
+        <a href="search.html" class="nav-item">
+            <span class="icon">🔍</span>
+            <span>Search</span>
+        </a>
+        <a href="notifications.html" class="nav-item">
+            <span class="icon">🔔</span>
+            <span>Alerts</span>
+        </a>
+        <a href="dms.html" class="nav-item">
+            <span class="icon">💬</span>
+            <span>Messages</span>
+        </a>
+    </nav>
+
+    <!-- Sidebar Menu -->
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-content">
+            <button class="close-sidebar" id="closeSidebar">×</button>
+            <h3>Menu</h3>
+            <ul class="menu-items">
+                <li><a href="profile.html?user=me"><span>👤</span> My Profile</a></li>
+                <li><a href="#" id="feedsToggle"><span>📰</span> Feeds: For You</a></li>
+                <li><a href="saved.html"><span>🔖</span> Saved Posts</a></li>
+                <li><a href="settings.html"><span>⚙️</span> Settings</a></li>
+                <li><a href="#" onclick="logout()"><span>🚪</span> Logout</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/feed.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
